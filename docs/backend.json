@@ -1,0 +1,125 @@
+
+{
+  "entities": {
+    "Tool": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Tool",
+      "type": "object",
+      "description": "Represents a single utility tool available in the Daily Utility Hub application.",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "slug": { "type": "string" },
+        "isActive": { "type": "boolean" },
+        "accessType": { "type": "string", "enum": ["free", "pro"] },
+        "rewardAdsEnabled": { "type": "boolean", "description": "Whether to show the rewarded ad overlay before showing results." },
+        "ads": {
+          "type": "object",
+          "properties": {
+            "top": { "$ref": "#/backend/entities/AdPlacementConfig" },
+            "bottom": { "$ref": "#/backend/entities/AdPlacementConfig" },
+            "left": { "$ref": "#/backend/entities/AdPlacementConfig" },
+            "right": { "$ref": "#/backend/entities/AdPlacementConfig" }
+          }
+        },
+        "adFrequency": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "slug", "isActive", "accessType"]
+    },
+    "AdPlacementConfig": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "adUnitId": { "type": "string" },
+        "customSnippet": { "type": "string" },
+        "width": { "type": "number" },
+        "height": { "type": "number" }
+      }
+    },
+    "AdUnit": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "code": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "isPro": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "Payment": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    },
+    "DailyAggregate": {
+      "type": "object",
+      "description": "Daily traffic and view aggregates.",
+      "properties": {
+        "date": { "type": "string", "format": "date" },
+        "views": { "type": "number" }
+      }
+    },
+    "RewardAdConfig": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "message": { "type": "string" },
+        "duration": { "type": "number" },
+        "adCode": { "type": "string" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "auth": {
+    "providers": ["password", "anonymous"]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/tools/{toolId}",
+        "definition": { "entityName": "Tool", "schema": { "$ref": "#/backend/entities/Tool" } }
+      },
+      {
+        "path": "/ad_units/{adId}",
+        "definition": { "entityName": "AdUnit", "schema": { "$ref": "#/backend/entities/AdUnit" } }
+      },
+      {
+        "path": "/admin_settings/{settingId}",
+        "definition": { "entityName": "GlobalConfig", "schema": { "type": "object" } }
+      },
+      {
+        "path": "/users/{userId}",
+        "definition": { "entityName": "User", "schema": { "$ref": "#/backend/entities/User" } }
+      },
+      {
+        "path": "/payments/{paymentId}",
+        "definition": { "entityName": "Payment", "schema": { "$ref": "#/backend/entities/Payment" } }
+      },
+      {
+        "path": "/daily_aggregates/{date}",
+        "definition": { "entityName": "DailyAggregate", "schema": { "$ref": "#/backend/entities/DailyAggregate" } }
+      },
+      {
+        "path": "/rewarded_ads_library/{adId}",
+        "definition": { "entityName": "RewardAdConfig", "schema": { "$ref": "#/backend/entities/RewardAdConfig" } }
+      }
+    ]
+  }
+}
