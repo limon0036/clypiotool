@@ -60,3 +60,20 @@
     @apply font-headline;
   }
 }
+
+@layer utilities {
+  .typing-caret {
+    animation: typing-caret-blink 1s step-end infinite;
+  }
+}
+
+@keyframes typing-caret-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
