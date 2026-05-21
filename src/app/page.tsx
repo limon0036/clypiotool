@@ -9,40 +9,45 @@ export default function Home() {
   const popularTools = tools.slice(0, 6);
 
   return (
-    <div className="container mx-auto px-4 py-8 md:py-12 space-y-10">
-      <section className="grid grid-cols-1 lg:grid-cols-2 items-center gap-8 rounded-3xl bg-gradient-to-br from-cyan-50 via-white to-indigo-50 p-6 md:p-10 animate-in fade-in slide-in-from-top-3">
-        <div className="space-y-5">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-cyan-700">
-            <Sparkles className="w-3.5 h-3.5" />
-            Premium Utility Platform
-          </div>
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-primary">
-            Free Online Tools For Everyone
-          </h1>
-          <p className="text-sm md:text-lg text-muted-foreground leading-relaxed">
-            Use powerful online tools for image, PDF, text, SEO, developer, and AI tasks.
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <Link href="#popular-tools" className="inline-flex h-11 items-center justify-center rounded-md bg-secondary px-6 text-sm font-bold text-secondary-foreground hover:bg-secondary/90">
-              Explore Tools
-            </Link>
-            <Link href="#featured-tool" className="inline-flex h-11 items-center justify-center rounded-md bg-white px-6 text-sm font-bold text-primary hover:bg-muted">
-              Popular Tools
-            </Link>
-          </div>
-        </div>
-        <div className="relative h-[260px] md:h-[320px]">
-          <div className="absolute right-0 top-4 h-40 w-40 rounded-3xl bg-cyan-200/70 rotate-[8deg] animate-in zoom-in-95" />
-          <div className="absolute left-6 top-16 h-32 w-32 rounded-2xl bg-indigo-200/70 -rotate-[10deg] animate-in fade-in" />
-          <div className="absolute inset-0 m-auto h-44 w-64 md:h-52 md:w-72 rounded-3xl bg-white/90 shadow-xl flex items-center justify-center rotate-[2deg]">
-            <div className="text-center space-y-2">
-              <p className="text-xs uppercase tracking-widest font-bold text-muted-foreground">Modern Illustration</p>
-              <p className="text-2xl font-extrabold text-primary">{tools.length}+ Smart Tools</p>
+    <>
+      <section className="w-full min-h-[420px] md:min-h-[500px] bg-gradient-to-br from-cyan-50 via-white to-indigo-50 py-12 md:py-16 lg:py-20 animate-in fade-in slide-in-from-top-3">
+        <div className="w-full max-w-none px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 items-center gap-10 lg:gap-12">
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-cyan-700">
+                <Sparkles className="w-3.5 h-3.5" />
+                Premium Utility Platform
+              </div>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-primary">
+                Free Online Tools For Everyone
+              </h1>
+              <p className="text-sm md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl">
+                Use powerful online tools for image, PDF, text, SEO, developer, and AI tasks.
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                <Link href="#popular-tools" className="inline-flex h-11 md:h-12 items-center justify-center rounded-md bg-secondary px-6 text-sm font-bold text-secondary-foreground hover:bg-secondary/90">
+                  Explore Tools
+                </Link>
+                <Link href="#featured-tool" className="inline-flex h-11 md:h-12 items-center justify-center rounded-md bg-white px-6 text-sm font-bold text-primary hover:bg-muted">
+                  Popular Tools
+                </Link>
+              </div>
+            </div>
+            <div className="relative w-full min-h-[300px] sm:min-h-[340px] md:min-h-[400px] lg:min-h-[440px]">
+              <div className="absolute right-0 top-4 h-44 w-44 md:h-52 md:w-52 rounded-3xl bg-cyan-200/70 rotate-[8deg] animate-in zoom-in-95" />
+              <div className="absolute left-6 top-16 h-36 w-36 md:h-40 md:w-40 rounded-2xl bg-indigo-200/70 -rotate-[10deg] animate-in fade-in" />
+              <div className="absolute inset-0 m-auto h-48 w-72 sm:h-56 sm:w-80 md:h-64 md:w-96 rounded-3xl bg-white/90 shadow-xl flex items-center justify-center rotate-[2deg]">
+                <div className="text-center space-y-2 px-4">
+                  <p className="text-xs uppercase tracking-widest font-bold text-muted-foreground">Modern Illustration</p>
+                  <p className="text-2xl md:text-3xl font-extrabold text-primary">{tools.length}+ Smart Tools</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      <div className="container mx-auto px-4 py-8 md:py-12 space-y-10">
       <section id="featured-tool" className="rounded-3xl bg-gradient-to-r from-violet-50 via-white to-fuchsia-50 p-6 md:p-8 animate-in fade-in slide-in-from-left-3">
         <div className="flex items-center justify-between gap-4 flex-wrap">
           <div className="space-y-2">
@@ -101,6 +106,7 @@ export default function Home() {
         </div>
       </section>
 
-    </div>
+      </div>
+    </>
   );
 }

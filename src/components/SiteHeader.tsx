@@ -35,7 +35,7 @@ export function SiteHeader() {
           <img
             src={logoUrl || "/favicon.ico"}
             alt="Logo"
-            className="w-8 h-8 object-contain shrink-0"
+            className="w-14 h-14 object-contain shrink-0"
           />
           <h1 className="text-lg md:text-xl font-bold tracking-tight text-primary truncate">{siteName}</h1>
         </Link>
