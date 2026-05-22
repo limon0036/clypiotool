@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import { Suspense } from 'react';
-import Script from 'next/script';
+import Script from 'next/script'; // এটি ব্যবহার করতে হবে
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
@@ -25,8 +25,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2391987813376112"
-     crossorigin="anonymous"></script>
+        
+        {/* Next.js এর Script কম্পোনেন্ট ব্যবহার করে AdSense কোড */}
+        <Script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2391987813376112" 
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body suppressHydrationWarning className="font-body antialiased min-h-screen bg-background overflow-x-hidden">
         <FirebaseClientProvider>
