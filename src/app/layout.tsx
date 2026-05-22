@@ -26,13 +26,6 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         <meta name="google-adsense-account" content="ca-pub-2391987813376112">
-        <Script
-          id="adsense-script"
-          async
-          strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2391987813376112"
-          crossOrigin="anonymous"
-        />
       </head>
       <body suppressHydrationWarning className="font-body antialiased min-h-screen bg-background overflow-x-hidden">
         <FirebaseClientProvider>
