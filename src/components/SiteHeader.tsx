@@ -8,6 +8,7 @@ import { useDoc, useFirestore, useMemoFirebase } from '@/firebase'
 import { doc } from 'firebase/firestore'
 import { tools } from "@/lib/tools-data"
 import { ChevronDown, MoreVertical } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 /**
  * Global site header that conditionally hides itself on admin routes.
@@ -16,7 +17,7 @@ export function SiteHeader() {
   const pathname = usePathname()
   const isAdmin = pathname?.startsWith('/admin')
   const db = useFirestore();
-  const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const siteConfigRef = useMemoFirebase(() => doc(db, 'admin_settings', 'site_config'), [db]);
@@ -29,27 +30,46 @@ export function SiteHeader() {
   if (isAdmin) return null
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur-md">
-      <div className="relative flex h-16 items-center justify-between gap-4 px-4 md:px-6 border-b">
-        <Link href="/" className="flex items-center gap-2 overflow-hidden">
+    <header className="sticky top-0 z-40 w-full border-b border-border/80 bg-white/95 backdrop-blur-md shadow-sm">
+      <div className="relative flex h-[4.5rem] items-center justify-between gap-4 px-4 md:px-6">
+        <Link href="/" className="flex items-center gap-3 overflow-hidden">
           <img
             src={logoUrl || "/favicon.ico"}
             alt="Logo"
-            className="w-14 h-14 object-contain shrink-0"
+            className="h-14 w-14 md:h-16 md:w-16 object-contain shrink-0"
           />
           <h1 className="text-lg md:text-xl font-bold tracking-tight text-primary truncate">{siteName}</h1>
         </Link>
         <nav className="hidden md:flex items-center gap-5 text-sm font-medium">
-          <Link href="/" className={pathname === "/" ? "text-primary" : "text-muted-foreground hover:text-primary"}>Home</Link>
+          <Link
+            href="/"
+            className={cn(
+              "transition-colors",
+              pathname === "/" ? "text-secondary font-semibold" : "text-muted-foreground hover:text-primary"
+            )}
+          >
+            Home
+          </Link>
           <button
             type="button"
-            onClick={() => setIsCategoriesOpen((prev) => !prev)}
-            className="inline-flex items-center gap-1 text-muted-foreground hover:text-primary"
+            onClick={() => setIsServicesOpen((prev) => !prev)}
+            className={cn(
+              "inline-flex items-center gap-1 transition-colors",
+              isServicesOpen ? "text-secondary font-semibold" : "text-muted-foreground hover:text-primary"
+            )}
           >
-            Categories
-            <ChevronDown className={`w-4 h-4 transition-transform ${isCategoriesOpen ? "rotate-180" : ""}`} />
+            Service
+            <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`} />
           </button>
-          <Link href="/about" className={pathname === "/about" ? "text-primary" : "text-muted-foreground hover:text-primary"}>About</Link>
+          <Link
+            href="/about"
+            className={cn(
+              "transition-colors",
+              pathname === "/about" ? "text-secondary font-semibold" : "text-muted-foreground hover:text-primary"
+            )}
+          >
+            About
+          </Link>
         </nav>
 
         <button
@@ -61,8 +81,8 @@ export function SiteHeader() {
           <MoreVertical className="w-5 h-5" />
         </button>
 
-        {isCategoriesOpen && (
-          <div className="hidden md:block absolute left-0 right-0 top-full border-b bg-background/95 backdrop-blur-md z-50">
+        {isServicesOpen && (
+          <div className="hidden md:block absolute left-0 right-0 top-full border-b border-slate-200/80 bg-white shadow-md z-50">
             <div className="px-4 md:px-6 py-3">
               <div className="flex flex-wrap items-center gap-2">
                 {tools.map((tool) => {
@@ -71,7 +91,7 @@ export function SiteHeader() {
                     <Link
                       key={tool.id}
                       href={`/tools/${tool.slug}`}
-                      onClick={() => setIsCategoriesOpen(false)}
+                      onClick={() => setIsServicesOpen(false)}
                       className={`rounded px-2.5 py-1.5 text-xs transition-colors ${
                         isActive
                           ? "bg-secondary text-secondary-foreground"
@@ -88,7 +108,7 @@ export function SiteHeader() {
         )}
 
         {isMobileMenuOpen && (
-          <div className="md:hidden absolute right-4 top-full mt-2 w-64 rounded-xl border bg-background shadow-lg z-50">
+          <div className="md:hidden absolute right-4 top-full mt-2 w-64 rounded-xl border border-slate-200 bg-white shadow-lg z-50">
             <div className="p-3 space-y-1">
               <Link
                 href="/"
@@ -104,7 +124,7 @@ export function SiteHeader() {
               >
                 About
               </Link>
-              <p className="px-3 pt-2 pb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Categories</p>
+              <p className="px-3 pt-2 pb-1 text-xs font-bold uppercase tracking-wider text-muted-foreground">Service</p>
               <div className="max-h-56 overflow-auto">
                 {tools.map((tool) => (
                   <Link

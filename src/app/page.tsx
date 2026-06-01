@@ -3,7 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { tools } from '@/lib/tools-data';
-import { ArrowRight, CheckCircle2, Cpu, Globe, ShieldCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
+import { WhyChooseUsSection } from '@/components/WhyChooseUsSection';
 
 export default function Home() {
   const popularTools = tools.slice(0, 6);
@@ -80,31 +81,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="rounded-3xl bg-gradient-to-r from-slate-50 to-cyan-50 p-6 md:p-8 animate-in fade-in">
-        <h2 className="text-2xl md:text-3xl font-bold text-primary mb-5">Why Choose Us</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="rounded-xl bg-white p-4 space-y-2">
-            <ShieldCheck className="w-5 h-5 text-cyan-600" />
-            <p className="font-bold text-primary">Secure & Reliable</p>
-            <p className="text-sm text-muted-foreground">Built with trusted modern technologies.</p>
-          </div>
-          <div className="rounded-xl bg-white p-4 space-y-2">
-            <Cpu className="w-5 h-5 text-violet-600" />
-            <p className="font-bold text-primary">Fast Performance</p>
-            <p className="text-sm text-muted-foreground">Optimized UI for quick tool access.</p>
-          </div>
-          <div className="rounded-xl bg-white p-4 space-y-2">
-            <Globe className="w-5 h-5 text-emerald-600" />
-            <p className="font-bold text-primary">All-in-One Platform</p>
-            <p className="text-sm text-muted-foreground">Multiple categories in one dashboard.</p>
-          </div>
-          <div className="rounded-xl bg-white p-4 space-y-2">
-            <CheckCircle2 className="w-5 h-5 text-amber-600" />
-            <p className="font-bold text-primary">User-Friendly</p>
-            <p className="text-sm text-muted-foreground">Simple navigation for everyone.</p>
-          </div>
-        </div>
-      </section>
+      <WhyChooseUsSection />
 
       </div>
     </>

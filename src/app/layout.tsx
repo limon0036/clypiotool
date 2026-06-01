@@ -25,10 +25,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
         {/* AdSense Verification Meta Tag (গুগল বট খুব সহজেই এটি খুঁজে পাবে) */}
         <meta name="google-adsense-account" content="ca-pub-2391987813376112" />
-        
+
         {/* Next.js এর Script কম্পোনেন্ট ব্যবহার করে AdSense কোড */}
         <Script 
           async 

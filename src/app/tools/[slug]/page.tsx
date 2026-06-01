@@ -19,6 +19,9 @@ import { collection, query, where, limit, doc } from 'firebase/firestore';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { tools } from '@/lib/tools-data';
+import { ToolDescriptionSection } from '@/components/tools/ToolDescriptionSection';
+import { OtherToolsNav } from '@/components/tools/OtherToolsNav';
+import { WhyChooseUsSection } from '@/components/WhyChooseUsSection';
 
 const toolComponentMap: Record<string, { component: React.ReactNode, title: string, subtitle: string }> = {
   'password-generator': { component: <PasswordGenerator />, title: 'Password Generator', subtitle: 'Generate uncrackable passwords in seconds.' },
@@ -172,9 +175,11 @@ export default function ToolPage({ params }: { params: Promise<{ slug: string }>
                   <Button asChild className="mt-6" variant="secondary"><Link href="/">Go to Dashboard</Link></Button>
                 </div>
               )}
-              <div className="max-w-4xl mx-auto">
+              <div className="max-w-4xl mx-auto w-full">
                 {toolConfig.component}
               </div>
+              <OtherToolsNav currentSlug={slug} />
+              <ToolDescriptionSection slug={slug} />
             </div>
 
             <div className="mt-12 w-full">
@@ -187,6 +192,10 @@ export default function ToolPage({ params }: { params: Promise<{ slug: string }>
           </div>
 
         </div>
+      </div>
+
+      <div className="container mx-auto px-4 pb-10 md:pb-12 max-w-[1600px]">
+        <WhyChooseUsSection className="mt-4" />
       </div>
     </div>
   );

@@ -1,44 +1,181 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  ContentList,
+  ContentPageLayout,
+  ContentSection,
+} from "@/components/ContentPageLayout";
 
 export const metadata: Metadata = {
-  title: "Terms | clypio Utility Hub",
-  description: "Read the terms of use for clypio Utility Hub.",
+  title: "Terms of Use | clypio Utility Hub",
+  description:
+    "Read the Terms of Use for clypio Utility Hub, including acceptable use, disclaimers, and limitations of liability.",
 };
 
 export default function TermsPage() {
   return (
-    <div className="container mx-auto px-4 py-10 md:py-14">
-      <div className="max-w-3xl space-y-6">
-        <h1 className="text-3xl md:text-4xl font-black tracking-tight text-primary">Terms of Use</h1>
-        <p className="text-muted-foreground leading-relaxed">
-          By accessing or using clypio Utility Hub, you agree to these Terms of Use. If you do not agree, please
-          discontinue use of the website.
+    <ContentPageLayout
+      eyebrow="Legal"
+      title="Terms of Use"
+      description="These terms govern your access to and use of clypio Utility Hub. By using our website, you agree to the conditions below."
+    >
+      <ContentSection title="1. Agreement to terms">
+        <p>
+          These Terms of Use (&quot;Terms&quot;) form a binding agreement between you and
+          clypio Utility Hub (&quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) regarding
+          your use of our website, tools, and related services (collectively, the
+          &quot;Service&quot;). If you do not agree to these Terms, you must not access or use
+          the Service.
         </p>
-        <div className="space-y-3">
-          <h2 className="text-xl font-bold text-primary">Acceptable use</h2>
-          <ul className="list-disc pl-5 text-muted-foreground space-y-2">
-            <li>Use the website only for lawful purposes.</li>
-            <li>Do not attempt to interfere with platform security, availability, or performance.</li>
-            <li>Do not use automated abuse, spam, or harmful scripts against our services.</li>
-          </ul>
-        </div>
-        <div className="space-y-3">
-          <h2 className="text-xl font-bold text-primary">Service availability</h2>
-          <p className="text-muted-foreground leading-relaxed">
-            We may update, modify, suspend, or remove features at any time to improve quality or maintain platform
-            stability. We do not guarantee uninterrupted availability.
-          </p>
-        </div>
-        <div className="space-y-3">
-          <h2 className="text-xl font-bold text-primary">Limitation of liability</h2>
-          <p className="text-muted-foreground leading-relaxed">
-            The tools are provided on an "as is" basis. Users are responsible for how generated outputs are used.
-            clypio Utility Hub is not liable for losses resulting from misuse, interpretation errors, or third-party
-            dependencies.
-          </p>
-        </div>
-        <p className="text-sm text-muted-foreground">Last updated: {new Date().getFullYear()}</p>
-      </div>
-    </div>
+        <p>
+          We may update these Terms from time to time. Material changes will be reflected by
+          updating the &quot;Last updated&quot; date at the top of this page. Continued use
+          after changes become effective constitutes acceptance of the revised Terms.
+        </p>
+      </ContentSection>
+
+      <ContentSection title="2. Eligibility">
+        <p>
+          You must be at least 13 years old (or the minimum age required in your jurisdiction)
+          to use the Service. If you are using the Service on behalf of an organization, you
+          represent that you have authority to bind that organization to these Terms.
+        </p>
+      </ContentSection>
+
+      <ContentSection title="3. Description of the Service">
+        <p>
+          clypio Utility Hub provides free, browser-based online tools for productivity,
+          conversion, formatting, and related tasks. Features may be added, modified, or
+          removed at any time to improve quality, security, or performance.
+        </p>
+        <p>
+          Unless explicitly stated otherwise, tools are provided for general informational and
+          productivity purposes. They are not a substitute for professional advice (including
+          legal, medical, financial, or security advice).
+        </p>
+      </ContentSection>
+
+      <ContentSection title="4. Acceptable use">
+        <p>You agree to use the Service only for lawful purposes. You must not:</p>
+        <ContentList
+          items={[
+            "Violate any applicable law, regulation, or third-party rights.",
+            "Attempt to gain unauthorized access to our systems, accounts, or data.",
+            "Interfere with or disrupt the availability, integrity, or performance of the Service.",
+            "Use bots, scrapers, or automated means to abuse rate limits or overload infrastructure.",
+            "Upload or transmit malware, spam, or harmful code.",
+            "Misrepresent outputs from our tools as official certifications or professional endorsements.",
+            "Use the Service to harass, defraud, or harm others.",
+          ]}
+        />
+        <p>
+          We reserve the right to restrict or terminate access if we reasonably believe a user
+          has violated these Terms or poses a risk to the platform or other users.
+        </p>
+      </ContentSection>
+
+      <ContentSection title="5. User content and responsibility">
+        <p>
+          Some tools allow you to enter text, URLs, files, or other data (&quot;User
+          Content&quot;). You retain ownership of your User Content. You are solely
+          responsible for the content you submit and for how you use any results generated by
+          the Service.
+        </p>
+        <p>
+          Do not submit sensitive personal data unless you understand how the specific tool
+          processes information. Where tools operate locally in your browser, data may not be
+          sent to our servers—but you should still exercise caution on shared or public
+          devices.
+        </p>
+      </ContentSection>
+
+      <ContentSection title="6. Intellectual property">
+        <p>
+          The Service, including its design, branding, text, graphics, and software (excluding
+          User Content), is owned by clypio Utility Hub or its licensors and is protected by
+          applicable intellectual property laws. You may not copy, modify, distribute, or
+          create derivative works from our materials without prior written permission, except
+          as permitted by law or for personal, non-commercial use of the Service itself.
+        </p>
+      </ContentSection>
+
+      <ContentSection title="7. Third-party services and links">
+        <p>
+          The Service may include links to third-party websites, APIs, or advertising partners.
+          We do not control and are not responsible for third-party content, policies, or
+          practices. Your use of third-party services is at your own risk and subject to their
+          respective terms.
+        </p>
+      </ContentSection>
+
+      <ContentSection title="8. Disclaimers">
+        <p>
+          THE SERVICE IS PROVIDED ON AN &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; BASIS,
+          WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+          TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+          NON-INFRINGEMENT.
+        </p>
+        <p>
+          We do not warrant that the Service will be uninterrupted, error-free, or completely
+          secure, or that tool outputs will be accurate for every use case. You are responsible
+          for verifying results before relying on them—especially for passwords, health
+          metrics, financial calculations, or legal documents.
+        </p>
+      </ContentSection>
+
+      <ContentSection title="9. Limitation of liability">
+        <p>
+          TO THE MAXIMUM EXTENT PERMITTED BY LAW, CLYPIO UTILITY HUB AND ITS OPERATORS WILL NOT
+          BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES,
+          OR ANY LOSS OF PROFITS, DATA, GOODWILL, OR BUSINESS OPPORTUNITIES, ARISING FROM YOUR
+          USE OF OR INABILITY TO USE THE SERVICE.
+        </p>
+        <p>
+          OUR TOTAL LIABILITY FOR ANY CLAIM RELATING TO THE SERVICE SHALL NOT EXCEED THE GREATER
+          OF (A) THE AMOUNT YOU PAID US IN THE TWELVE MONTHS BEFORE THE CLAIM (TYPICALLY ZERO
+          FOR FREE TOOLS) OR (B) ONE HUNDRED U.S. DOLLARS (USD $100), WHERE PERMITTED BY LAW.
+        </p>
+      </ContentSection>
+
+      <ContentSection title="10. Indemnification">
+        <p>
+          You agree to indemnify and hold harmless clypio Utility Hub from claims, damages,
+          losses, and expenses (including reasonable legal fees) arising from your misuse of
+          the Service, your User Content, or your violation of these Terms or applicable law.
+        </p>
+      </ContentSection>
+
+      <ContentSection title="11. Privacy">
+        <p>
+          Our collection and use of information is described in our{" "}
+          <Link href="/privacy-policy" className="font-medium text-secondary hover:underline">
+            Privacy Policy
+          </Link>
+          , which is incorporated into these Terms by reference.
+        </p>
+      </ContentSection>
+
+      <ContentSection title="12. Governing law">
+        <p>
+          These Terms are governed by applicable laws in the jurisdiction where clypio Utility
+          Hub operates, without regard to conflict-of-law principles. Any disputes shall be
+          resolved in competent courts of that jurisdiction, unless mandatory consumer
+          protection laws in your country require otherwise.
+        </p>
+      </ContentSection>
+
+      <ContentSection title="13. Contact">
+        <p>
+          For questions about these Terms, contact{" "}
+          <a
+            href="mailto:support@clypio.com"
+            className="font-medium text-secondary hover:underline"
+          >
+            support@clypio.com
+          </a>
+          .
+        </p>
+      </ContentSection>
+    </ContentPageLayout>
   );
 }
