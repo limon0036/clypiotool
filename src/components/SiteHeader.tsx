@@ -62,6 +62,15 @@ export function SiteHeader() {
             <ChevronDown className={`w-4 h-4 transition-transform ${isServicesOpen ? "rotate-180" : ""}`} />
           </button>
           <Link
+            href="/blog"
+            className={cn(
+              "transition-colors",
+              pathname?.startsWith("/blog") ? "text-secondary font-semibold" : "text-muted-foreground hover:text-primary"
+            )}
+          >
+            Blog
+          </Link>
+          <Link
             href="/about"
             className={cn(
               "transition-colors",
@@ -116,6 +125,13 @@ export function SiteHeader() {
                 className="block rounded-md px-3 py-2 text-sm text-foreground hover:bg-muted"
               >
                 Home
+              </Link>
+              <Link
+                href="/blog"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="block rounded-md px-3 py-2 text-sm text-foreground hover:bg-muted"
+              >
+                Blog
               </Link>
               <Link
                 href="/about"

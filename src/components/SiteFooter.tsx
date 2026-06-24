@@ -46,6 +46,9 @@ export function SiteFooter() {
               <Link href="/about" className="block text-foreground hover:text-primary">
                 About
               </Link>
+              <Link href="/blog" className="block text-foreground hover:text-primary">
+                Blog
+              </Link>
               <Link href="/user-guide" className="block text-foreground hover:text-primary">
                 How to use
               </Link>

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { tools } from "@/lib/tools-data";
+import { blogPosts } from "@/lib/blog-posts";
 import { getSiteUrl } from "@/lib/site-url";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -26,6 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/blog`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/terms`,
       lastModified,
       changeFrequency: "yearly",
@@ -43,8 +50,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${baseUrl}/tools/${tool.slug}`,
     lastModified,
     changeFrequency: "weekly" as const,
-    priority: 0.9,
+    priority: 0.95,
   }));
 
-  return [...staticRoutes, ...toolRoutes];
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.publishedAt),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  return [...staticRoutes, ...toolRoutes, ...blogRoutes];
 }
